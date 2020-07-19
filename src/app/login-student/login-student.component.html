@@ -1,0 +1,104 @@
+<!-- <p>login-student works!</p> -->
+<!-- {{emailid}} -->
+<form #loginform="ngForm" [class.wd]="!loginform.form.valid" [class.cd]="loginform.form.valid" novalidate (submit)="submitForm($event)">
+    <div class="login">Login</div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">Registration ID</label>
+        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter registration no" name="email" #email="ngModel" [class.is-invalid]="!email.valid && email.touched" [class.is-valid]="email.valid && email.touched" [(ngModel)]="emailid" required>
+        <small class="text-danger" *ngIf="!email.valid && email.touched">ID is required</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" aria-describedby="passwordHelp" placeholder="Enter password" name="password" #password1="ngModel" [class.is-invalid]="!password1.valid && password1.touched" [class.is-valid]="password1.valid && password1.touched" [(ngModel)]="password" required>
+        <small id="passwordHelp" class="form-text text-muted" *ngIf="!password1.touched">Password is encrypted.</small>
+        <small class="text-danger" *ngIf="!password1.valid && password1.touched">Password is required</small>
+    </div>
+    <button type="submit" class="btn btn-info float-right" [disabled]="!loginform.form.valid">Log In</button>
+</form> 
+
+<!-- Modal Creation below -->
+
+<!-- {{emailid}}
+{{password}} -->
+
+<!-- <div class="container buttoncls">
+    <nav class="navbar navbar-light bg-light">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModalScrollable">
+        Login
+    </button>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registerModalScrollable">
+        Register New Student
+    </button>
+    </nav>
+</div> -->
+
+<!-- Login Modal -->
+<!-- <div class="modal fade" id="loginModalScrollable" tabindex="-1" role="dialog" aria-labelledby="loginModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title login" style="text-align: center" id="loginModalScrollableTitle">Login Portal</div>
+                <button type="button" class="close" data-dismiss="modal" (click)="loginformreset()" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form #loginform="ngForm" [class.wd]="!loginform.form.valid" [class.cd]="loginform.form.valid" novalidate>
+                    <div class="form-group">
+                        <label for="loginInputEmail1">Registration ID</label>
+                        <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter registration no" name="email" #email1="ngModel" [class.is-invalid]="!email1.valid && email1.touched" [class.is-valid]="email1.valid && email1.touched" [(ngModel)]="emailid" required>
+                        <small class="text-danger" *ngIf="!email1.valid && email1.touched">ID is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" aria-describedby="passwordHelp" placeholder="Enter password" name="password" #password1="ngModel" [class.is-invalid]="!password1.valid && password1.touched" [class.is-valid]="password1.valid && password1.touched" [(ngModel)]="password" required>
+                        <small id="passwordHelp" class="form-text text-muted" *ngIf="!password1.touched">Password is encrypted.</small>
+                        <small class="text-danger" *ngIf="!password1.valid && password1.touched">Password is required</small>
+                    </div>
+                </form> 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="loginformreset()" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary float-right" [disabled]="!loginform.form.valid" data-dismiss="modal" (click)="submitForm($event)">Log In</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<!-- Register Modal -->
+<!-- <div class="modal fade" id="registerModalScrollable" tabindex="-1" role="dialog" aria-labelledby="registerModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title login" style="text-align: center" id="registerModalScrollableTitle">Register Portal</div>
+                <button type="button" class="close" data-dismiss="modal" (click)="signupformreset()" aria-label="Close">
+                <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form #signupform="ngForm" [class.wd]="!signupform.form.valid" [class.cd]="signupform.form.valid" novalidate (submit)="submitForm($event)">
+                            <div class="signup">Register Student</div>
+                            <div class="form-group">
+                                Name: <input type="text" class="form-control" name="fullname" placeholder="Name" #nameid="ngModel" [class.is-invalid]="!nameid.valid && nameid.touched" [class.is-valid]="nameid.valid && nameid.touched" [(ngModel)]="fullname" required>
+                                <small class="text-danger" *ngIf="!nameid.valid && nameid.touched">Name is required</small>
+                                <small class="form-text text-muted" *ngIf="!nameid.touched"></small>
+                            </div>
+                            <div class="form-group">
+                                Registration ID: <input type="text" class="form-control" name="emailsu" placeholder="College ID" #emailidsu="ngModel" [class.is-invalid]="!emailidsu.valid && emailidsu.touched" [class.is-valid]="emailidsu.valid && emailidsu.touched" [(ngModel)]="email" required>
+                                <small class="text-danger" *ngIf="!emailidsu.valid && emailidsu.touched">Registration id is required</small>
+                                <small class="form-text text-muted" *ngIf="!emailidsu.touched">We'll never share your details with anyone else.</small>
+                            </div>
+                            <div class="form-group">
+                                Branch ID: 
+                                <input type="text" class="form-control" name="branch" placeholder="Branch ID" #branchid="ngModel" [class.is-invalid]="!branchid.valid && branchid.touched" [class.is-valid]="branchid.valid && branchid.touched" [(ngModel)]="branch" required>
+                                <small class="text-danger" *ngIf="!branchid.valid && branchid.touched">Branch id is required</small>
+                            </div>
+                    </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="signupformreset()" data-dismiss="modal">Close</button>
+                <button type="submit" (click)="submitFormSignup($event)" class="btn btn-primary" [disabled]="!signupform.form.valid" data-dismiss="modal">Register</button>
+            </div>
+        </div>
+    </div>
+</div> -->

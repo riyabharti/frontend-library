@@ -1,0 +1,37 @@
+<!-- {{fullname}}
+{{regno}}
+{{branch}} -->
+<form #signupform="ngForm" [class.wd]="!signupform.form.valid" [class.cd]="signupform.form.valid" novalidate (submit)="submitForm($event)">
+    <div class="signup">Register Student</div>
+    <div class="form-group">
+        Name: <input type="text" class="form-control" name="fullname" placeholder="Name" #nameid="ngModel" [class.is-invalid]="!nameid.valid && nameid.touched" [class.is-valid]="nameid.valid && nameid.touched" [(ngModel)]="fullname" required>
+        <small class="text-danger" *ngIf="!nameid.valid && nameid.touched">Name is required</small>
+        <small class="form-text text-muted" *ngIf="!nameid.touched"></small>
+    </div>
+    <div class="form-group">
+        Registration ID: <input type="text" class="form-control" name="regid" placeholder="College ID" #regid="ngModel" [class.is-invalid]="!regid.valid && regid.touched" [class.is-valid]="regid.valid && regid.touched" [(ngModel)]="regno" required>
+        <small class="text-danger" *ngIf="!regid.valid && regid.touched">Registration id is required</small>
+        <small class="form-text text-muted" *ngIf="!regid.touched">We'll never share your details with anyone else.</small>
+    </div>
+    <!-- <div class="form-group">
+        Branch ID: 
+        <input type="text" class="form-control" name="branch" placeholder="Branch ID" #branchid="ngModel" [class.is-invalid]="!branchid.valid && branchid.touched" [class.is-valid]="branchid.valid && branchid.touched" [(ngModel)]="branch" required>
+        <small class="text-danger" *ngIf="!branchid.valid && branchid.touched">Branch id is required</small>
+    </div> -->
+    <div class="dropdown form-group">
+        Branch ID:
+        <select name="streams" [(ngModel)]="branch">
+            <option *ngFor="let stream of streams"  [value]="stream" selected>{{stream}}</option>
+        </select>
+    </div>
+   
+    <button type="submit" class="btn btn-info float-right" [disabled]="!signupform.form.valid">Register</button>
+</form>
+<!-- <label id="example-radio-group-label">Branch ID:</label>
+    <mat-radio-group 
+    aria-labelledby="example-radio-group-label" name="branch" class="example-radio-group" [(ngModel)]="branch">
+        <mat-radio-button class="example-radio-button" name="branch" *ngFor="let stream of streams" [value]="stream">
+            {{stream}}
+        </mat-radio-button>
+    </mat-radio-group>
+<div>Branch ID is: {{branch}}</div> -->

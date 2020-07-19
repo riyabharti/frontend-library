@@ -1,0 +1,33 @@
+<!-- <p>issue-book works!</p> -->
+<!-- {{issuedBooks|json}} -->
+<div class="spinner-border m-5" *ngIf="loading" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+<div style="text-align: right;padding-top: 4px;margin-bottom: 40px;">{{libid}} <br>{{username}}</div>
+
+<table class="table table-bordered table-striped">
+    <thead *ngIf="books!=0" class="thead-dark">
+        <tr>
+            <th> # </th>
+            <th> Title </th>
+            <th> Author </th>
+            <th> ISBN No </th>
+            <th> No of Books available </th>
+            <th>Issue</th>
+        </tr>
+    </thead>
+    <tbody>
+        <h4 *ngIf="books==0">No Books are available</h4>
+        <tr *ngFor="let book of books; let i=index">
+            <td> {{i+1}} </td>
+            <td> {{book.name}} </td>
+            <td> {{book.author}} </td>
+            <td> {{book.isbn}} </td>
+            <td> {{book.total-book.issued}}  </td>
+            <button type="button" class="btn btn-info" [disabled]="!(book.total-book.issued)" (click)="updateBook(i)">
+            Issue Book
+            </button>
+            
+        </tr>
+    </tbody>
+</table>

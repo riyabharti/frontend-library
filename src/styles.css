@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+.profile
+{
+    color: indigo;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.navbtn{
+    /* margin-left: 1000px; */
+    float: right;
+    margin-right: 200px;
+}

@@ -1,0 +1,23 @@
+.wd {
+    background: floralwhite;
+    padding: 5% 25%;
+}
+
+.cd {
+    background: transparent;
+    padding: 5% 25%;
+}
+/* .signupicon{
+    background-image: url(../../assets/suplogo.svg)
+    
+} */
+.signup {
+	background: blue;
+    background-image: linear-gradient(white,rgb(120, 211, 127));
+    font-size: 20px;
+	width: 100%;
+	border-radius: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 20px;
+}

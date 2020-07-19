@@ -1,3 +1,6 @@
 export const environment = {
-  production: true
+  production: true,
+  maxBooks : 5,
+  maxBorrowDuration: 7,
+  apiURL: '/'
 };

@@ -1,0 +1,34 @@
+<!-- {{branchvalue | json}} -->
+<form #bookform="ngForm" [class.wd]="!bookform.form.valid" [class.cd]="bookform.form.valid" novalidate (submit)="submitForm($event)">
+    <!-- <img src="../../assets/signlogo.svg" alt="book" height="55" width="200" style="margin: 10px; border-radius: 50px"> -->
+<div class="container">
+    <h4 style="padding-top: 50px">Book Details:</h4>
+    <div class="form-group">
+        <label for="exampleInputTitle1">Book Title</label>
+        <input type="text" class="form-control" placeholder="Enter title" name="bookname" #nameB="ngModel" [class.is-invalid]="!nameB.valid && nameB.touched" [class.is-valid]="nameB.valid && nameB.touched" [(ngModel)]="nameid" required>
+        <small class="text-danger" *ngIf="!nameB.valid && nameB.touched">Title of the Book is required</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputauthor1">Author</label>
+        <input type="text" class="form-control" placeholder="Enter author" name="author" #author="ngModel" [class.is-invalid]="!author.valid && author.touched" [class.is-valid]="author.valid && author.touched" [(ngModel)]="authorid" required>
+        <small class="text-danger" *ngIf="!author.valid && author.touched">Author is required</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputisbn1">ISBN NO</label>
+        <input type="text" class="form-control" placeholder="Enter ISBN NO." name="isbn" #isbn="ngModel" [class.is-invalid]="!isbn.valid && isbn.touched" [class.is-valid]="isbn.valid && isbn.touched" [(ngModel)]="isbnid" required>
+        <small class="text-danger" *ngIf="!isbn.valid && isbn.touched">ISBN is required</small>
+    </div>
+    <div class="dropdown form-group">
+        <label for="exampleInputbranchid1">Branch ID: </label>
+        <br>
+        <label *ngFor="let stream of streams; let i=index;" style="display: block;margin-top: -10px;">
+           <input id="checkFollower" type="checkbox" [(ngModel)]="branchvalue[i]" name="input{{i}}" aria-label="Follower input"> {{stream}} 
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputno1">Total No of Book</label>
+        <input type="text" class="form-control" placeholder="1" name="total" #total="ngModel" [class.is-invalid]="!total.valid && total.touched" [class.is-valid]="total.valid && total.touched" [(ngModel)]="totalid">
+    </div>
+    <button type="submit" class="btn btn-info float-right" [disabled]="!bookform.form.valid">Add Book</button>
+</div>
+</form> 

@@ -1,0 +1,65 @@
+<!-- <p>student-details works!</p> -->
+<!-- {{issuedBooks}} -->
+<div class="spinner-border m-5" *ngIf="loading" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
+
+<div class="container" *ngIf="!loading">
+    
+    <div style="text-align: right;padding-top: 4px;margin-bottom: 40px;">
+        {{libid}} <br>{{username}}
+        <!-- <div class="col-sm-3">
+            <p>Upload Your Profile Photo:</p>
+            <label class="btn btn-outline-success" for="fileInput" style="width: 100%">{{ photo ? "Choose Other Photo" : "Choose Profile Photo" }}
+                <input type="file" hidden id="fileInput" accept=".jpg"
+                    (change)="fileRead($event.target.files)" required>
+            </label>
+            <p>{{ photo ? 'File Chosen: ' + photo.name : "No File Chosen" }}</p>
+        </div> -->
+    </div>
+
+    <div>
+        <p>Upload Your Profile Photo:</p>
+        <span style="color:red;" *ngIf="message">{{message}}</span>
+        <input #file type="file" accept='image/*' (change)="preview(file.files)" *ngIf="!imgURL"/>
+        <img [src]="imgURL" height="200" *ngIf="imgURL">
+        <button class="btn btn-outline-success" *ngIf="imgURL && !message" (click)=uploadPhoto()>Upload</button>
+    </div>
+    
+    <h5 *ngIf="issuedBooks.length>0">Books Issued:</h5>
+    <h5 *ngIf="issuedBooks.length==0">No Books are issued.</h5>
+    <div *ngFor="let book of issuedBooks; let i=index">
+        {{book.name}}
+        <button class="btn btn-info" type="button" (click)=returnBook(i)>Return</button>
+    </div>
+</div>
+
+
+
+<!-- {{book}}
+<div class="container buttoncls">
+    <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModalScrollable">
+        Issue Book
+    </button>
+
+</div>
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalScrollableTitle">Enter the Book you want to Issue</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <textarea rows="10" style="width:100%" name="book" #bookid="ngModel" [class.is-invalid]="!bookid.valid && bookid.touched" [class.is-valid]="bookid.valid && bookid.touched" [(ngModel)]="book"
+            required></textarea><br>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" (click)="issueBook()" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+        </div>
+        </div>
+    </div>
+</div> -->

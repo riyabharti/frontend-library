@@ -1,0 +1,20 @@
+.wd {
+    /* background: wheat; */
+    padding: 5% 25%;
+}
+
+.cd {
+    /* background: transparent; */
+    padding: 5% 25%;
+}
+.login{
+    background-image: linear-gradient(rgb(194, 186, 186),rgb(62, 92, 177));
+    font-size: 20px;
+	width: 100%;
+	border-radius: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
